@@ -37,6 +37,8 @@ export default function useFarmRewards({ chainId = ChainId.ETHEREUM }) {
   const farms = useFarms({ chainId })
   const farmAddresses = useMemo(() => farms.map((farm) => farm.pair.toLowerCase()), [farms])
 
+  console.log(farms)
+
   const allTokens = useAllTokens()
   const { data: swapPairs } = useSushiPairs({
     chainId,
@@ -61,6 +63,10 @@ export default function useFarmRewards({ chainId = ChainId.ETHEREUM }) {
     },
     shouldFetch: !!farmAddresses,
   })
+
+  console.log('test trident')
+  console.log('--------------')
+  console.log(tridentPairs)
 
   const { data: swapPairs1d } = useSushiPairs({
     chainId,
@@ -269,7 +275,7 @@ export default function useFarmRewards({ chainId = ChainId.ETHEREUM }) {
               currency: NATIVE[ChainId.KAVA],
               rewardPerBlock,
               rewardPerDay: rewardPerSecond * 86400,
-              rewardPrice: 1, //todo: need handle this
+              rewardPrice: 1.78, //todo: need handle this
             },
             [ChainId.METIS]: {
               currency: NATIVE[ChainId.METIS],
